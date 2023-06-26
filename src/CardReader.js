@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from './Modal';
 import './App.css';
 
-function CardReader() {
+function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cardDetails, cardDetailsSet] = useState({})
 
@@ -21,9 +21,9 @@ function CardReader() {
         <div className="scan-icon" onClick={openModal} />
       </div>
       {isModalOpen && <Modal closeModal={closeModal} />}
-      {cardDetails && JSON.stringify(cardDetails)}
+      {(cardDetails && cardDetails?.number) && JSON.stringify(cardDetails)}
     </div>
   );
 }
 
-export default CardReader;
+export default App;
