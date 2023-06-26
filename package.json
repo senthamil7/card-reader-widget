@@ -1,6 +1,6 @@
 {
   "name": "card-reader-widget",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "card reader widget",
   "main": "dist/card-reader.js",
   "scripts": {
