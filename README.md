@@ -1,6 +1,6 @@
 # Card reader widget (CRW)
 
-CRW is a react library for capture the credit card images.
+CRW is a react library for capture the credit card images. 
 
 ## Installation
 
@@ -26,9 +26,12 @@ import './App.css';
 
 
 function App() {
+  const onDone = (response) => {
+   console.log('response', response);
+  }
   return (
     <div>
-      <CardReader />
+      <CardReader logger={console.log} onDone={onDone} />
     </div>
   );
 };

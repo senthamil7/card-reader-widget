@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import Modal from './Modal';
 import './App.css';
 
-function App() {
+function App(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cardDetails, cardDetailsSet] = useState({})
-
+  const logger = props.logger ? props.logger : console.log;
   const openModal = () => {
     setIsModalOpen(true);
   };
 
   const closeModal = (cardDetails) => {
-    cardDetailsSet(cardDetails)
+    props?.onDone(cardDetails);
+    logger('cardDetails', cardDetails);
     setIsModalOpen(false);
   };
 
@@ -21,7 +21,6 @@ function App() {
         <div className="scan-icon" onClick={openModal} />
       </div>
       {isModalOpen && <Modal closeModal={closeModal} />}
-      {(cardDetails && cardDetails?.number) && JSON.stringify(cardDetails)}
     </div>
   );
 }

@@ -9,15 +9,12 @@ const processImage = async (imageSrc) => {
   let formattedres = res.replace(/[^0-9 /]/g, "");
   let cardnumberarray = formattedres.split(" ");
   const reg = /^\d+$/;
-  console.log('cardnumberarray',cardnumberarray);
   cardnumberarray.forEach((item) => {
       if((item && item !==0 ) && ((item.length === 4 || item.length === 3 ) && reg.test(item))) {
           cardnumber += item
       }
   });
-  console.log('cardnumber',cardnumber);
   if(checkLuhn(cardnumber)) {
-    console.log('luhn check passed');
     let cardbrand = identifyCreditCard(cardnumber);
       if(cardbrand) {
         let cardDetails = {
@@ -93,7 +90,6 @@ const Modal = ( {closeModal} ) => {
   const captureImage = async () => {
     const imageSrc = webcamRef.current.getScreenshot();
     let cardDetails = await processImage(imageSrc);
-    console.log('cardDetails',cardDetails);
     if(!cardDetails) {
       captureImage();
     } else {
